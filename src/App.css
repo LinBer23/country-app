@@ -1,0 +1,45 @@
+header {
+    margin: 10px;
+    width: 100%;
+
+    div {
+        justify-content: space-between;
+        margin: 10px;
+        display: flex;
+        align-items: center;
+        & button {
+            width: 200px;
+            height: 50px;
+            margin: 10px;
+        }
+    }
+}
+.wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 400px);
+}
+filter-wrapper {
+    width: 100%;
+    margin: 10px;
+    display: flex;
+    justify-content: space-between;
+    & input {
+        width: 200px;
+        height: 50px;
+    }
+    & select {
+        width: 200px;
+        height: 50px;
+    }
+}
+.countriesItems {
+    & section {
+        width: 400px;
+        height: 400px;
+        img {
+            width: 100%;
+            height: auto;
+            border-color: antiquewhite;
+        }
+    }
+}
