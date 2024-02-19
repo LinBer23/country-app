@@ -11,6 +11,9 @@
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    -webkit-scrollbar-thumb {
+        border-radius: 10px;
+    }
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -18,7 +21,7 @@
 }
 
 body {
-    margin: 0 auto;
+    /*  margin: 0 auto; */
     display: block;
     min-width: 320px;
 }

@@ -1,45 +1,75 @@
 header {
-    margin: 10px;
     width: 100%;
 
     div {
+        width: 100%;
         justify-content: space-between;
-        margin: 10px;
         display: flex;
+
         align-items: center;
         & button {
             width: 200px;
             height: 50px;
-            margin: 10px;
+
+            color: rgb(169, 167, 167);
+            background-color: #213547;
+            border: none;
+            text-align: center;
+        }
+        button:hover {
+            color: #747bff;
         }
     }
 }
+.color-switch-box {
+    width: 90%;
+}
+
 .wrapper {
     display: grid;
-    grid-template-columns: repeat(auto-fill, 400px);
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
 }
+/* .picWrapper {
+    height: 200px;
+} */
+/* .nepal {
+    color: black;
+} */
 filter-wrapper {
-    width: 100%;
-    margin: 10px;
+    padding: 7px;
     display: flex;
+
     justify-content: space-between;
+
     & input {
         width: 200px;
         height: 50px;
+        color: rgb(169, 167, 167);
+        border: none;
+        background-color: #213547;
+        text-align: center;
     }
+
     & select {
         width: 200px;
         height: 50px;
+        color: rgb(169, 167, 167);
+        border: none;
+        background-color: #213547;
+        text-align: center;
     }
 }
 .countriesItems {
-    & section {
-        width: 400px;
-        height: 400px;
-        img {
-            width: 100%;
-            height: auto;
-            border-color: antiquewhite;
-        }
+    display: flex;
+    flex-direction: column;
+    border: solid 2px #f9f9f9;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #213547;
+    & img {
+        width: 100%;
+        height: auto;
+        border-color: antiquewhite;
     }
 }
