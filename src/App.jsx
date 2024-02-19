@@ -4,6 +4,7 @@ import { useState } from "react";
 import { CiCloudMoon } from "react-icons/ci";
 import { CiSun } from "react-icons/ci";
 import "./App.css";
+import Country from "./Country";
 
 const App = () => {
     const [countries, setCountries] = useState([]);
@@ -96,14 +97,7 @@ const App = () => {
             </filter-wrapper>
             <main className="wrapper">
                 {filteredCountriesByContinent.map((countriesItem, index) => (
-                    <section key={index} className="countriesItems">
-                        <div className="picWrapper" >
-                            <img src={countriesItem.flags.svg} alt="" />
-                        </div>
-                        <h2>Country: {countriesItem.name.common}</h2>
-                        <p> Capital: {countriesItem.capital}</p>
-                        <p>Continent: {countriesItem.region}</p>
-                    </section>
+                    <Country ci={countriesItem} i={index} />
                 ))}
             </main>
         </>

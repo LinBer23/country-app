@@ -30,12 +30,15 @@ header {
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 1rem;
 }
-/* .picWrapper {
+/* .textWrapper {
     height: 200px;
 } */
 /* .nepal {
     color: black;
 } */
+.textWrapper {
+    padding-left: 10px;
+}
 filter-wrapper {
     padding: 7px;
     display: flex;
@@ -63,13 +66,20 @@ filter-wrapper {
 .countriesItems {
     display: flex;
     flex-direction: column;
+    background-color: #213547;
     border: solid 2px #f9f9f9;
     border-radius: 10px;
     overflow: hidden;
-    background-color: #213547;
+
     & img {
         width: 100%;
         height: auto;
         border-color: antiquewhite;
+    }
+
+    .countriesItems:hover {
+        border-color: red;
+        text-shadow: #f9f9f9;
+        box-shadow: #f9f9f9;
     }
 }
