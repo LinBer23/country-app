@@ -25,10 +25,18 @@ header {
     width: 90%;
 }
 
+/* Übung links oben */
+a {
+    background: #000;
+    color: aliceblue;
+    border: 1px black solid;
+}
+
 .wrapper {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 1rem;
+    margin-bottom: 3em;
 }
 /* .textWrapper {
     height: 200px;
@@ -46,12 +54,13 @@ filter-wrapper {
     justify-content: space-between;
 
     & input {
+        font-size: 17px;
         width: 200px;
         height: 50px;
         color: rgb(169, 167, 167);
         border: none;
         background-color: #213547;
-        text-align: center;
+        padding-inline-start: 3px;
     }
 
     & select {
@@ -61,25 +70,13 @@ filter-wrapper {
         border: none;
         background-color: #213547;
         text-align: center;
+        font-size: 17px;
     }
 }
-.countriesItems {
-    display: flex;
-    flex-direction: column;
-    background-color: #213547;
+
+section div img {
+    width: 30%;
+    height: auto;
+    background-color: #747bff;
     border: solid 2px #f9f9f9;
-    border-radius: 10px;
-    overflow: hidden;
-
-    & img {
-        width: 100%;
-        height: auto;
-        border-color: antiquewhite;
-    }
-
-    .countriesItems:hover {
-        border-color: red;
-        text-shadow: #f9f9f9;
-        box-shadow: #f9f9f9;
-    }
 }

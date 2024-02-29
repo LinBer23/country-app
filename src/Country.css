@@ -1,0 +1,23 @@
+.countriesItems {
+    display: flex;
+    flex-direction: column;
+    background-color: #213547;
+    border: solid 2px #f9f9f9;
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+
+    & img {
+        width: 100%;
+        height: auto;
+        border-color: antiquewhite;
+        border-radius: 10px;
+      
+    }
+}
+.countriesItems:hover {
+    text-shadow: #f9f9f9;
+    box-shadow: #f9f9f9;
+    scale: 1.2;
+    z-index: 20;
+}

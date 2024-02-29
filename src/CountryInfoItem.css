@@ -1,0 +1,13 @@
+.countryInfo {
+    margin: 2em;
+    border: solid 2px #f9f9f9;
+    border-radius: 10px;
+    align-items: center;
+    text-align: center;
+    background-color: #213547;
+    /* background-color: #747bff; */
+    & img {
+        width: 45%;
+        margin-top: 2em;
+    }
+}
