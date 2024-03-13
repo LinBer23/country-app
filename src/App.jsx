@@ -4,40 +4,47 @@ import { useState } from "react";
 /* import { CiCloudMoon } from "react-icons/ci"; */
 import { CiSun } from "react-icons/ci";
 import "./App.css";
-import Country from "./Country/Country";
+import Country from "./components/Country/Country";
 import CountryInfoItem from "./CountryInfoItem";
 import "./Country.css";
 import "./CountryInfoItem.css";
+import Toggle from "./components/Country/Toggle";
+
+import ClipLoader from "react-spinners/ClipLoader";
 
 const App = () => {
     const [countries, setCountries] = useState([]);
     const [input, setInput] = useState("");
     const [filterRegion, setFilterRegion] = useState("");
     const [currentCountry, setCurrentCountry] = useState(null);
-    const [visible, setVisible] = useState(true);
+    const [toggleVue, setToggleVue] = useState(true);
+    const [loadingSpinner, setloadingSpinner] = useState(true);
+    const [color, setColor] = useState("#ffffff");
+    const [countryLength, setCountryLength] = useState(20);
+    const [darkMode, setDarkMode] = useState(true);
 
     const fetchCountries = async () => {
         const RESPONSE = await fetch("https://restcountries.com/v3.1/all");
 
         if (!RESPONSE.ok) console.log("Error fetching data");
         const countriesDataUnsorted = await RESPONSE.json();
+
         const countriesData = countriesDataUnsorted.toSorted((a, b) => {
-            let name_a = a.name.common;
-            let name_b = b.name.common;
-            if (name_a < name_b) {
+            let firstCountryName = a.name.common;
+            let nextCountry = b.name.common;
+            if (firstCountryName < nextCountry) {
                 return -1;
             }
             return 1;
         });
-        console.log(countriesData);
+
         setCountries(countriesData);
+        setloadingSpinner(false);
     };
 
     useEffect(() => {
         fetchCountries();
     }, []);
-
-    function addNewInfoItem() {}
 
     function currentContinent(countries) {
         /*    const region = ["Africa", "Europe", "Asien"];
@@ -58,13 +65,23 @@ const App = () => {
             );
         });
     }
+
+    function handleSliceCountries() {
+        setCountryLength(countryLength + 20);
+    }
+    function handleLessCountries() {
+        if (countryLength >= 20) {
+            setCountryLength(countryLength - 20);
+        }
+    }
     function handleClick() {
-        setVisible(!visible);
+        setToggleVue(!toggleVue);
     }
 
     function handleSelectChange(e) {
         setFilterRegion(e.target.value);
     }
+
     /*  function handleInputChange(e) {
         setInput(e.target.value);
     } */
@@ -89,14 +106,21 @@ const App = () => {
         return country.region === filterRegion;
     });
 
+    const override = {
+        display: "block",
+        margin: "0 auto",
+        borderColor: "red",
+    };
+
+    const slicedResult = filteredCountriesByContinentAndInput.slice(0, countryLength);
+
     return (
-        <>
+        <div data-theme={darkMode ? "dark" : "light"}>
             <header>
                 <div>
                     <h1>Where in the World </h1>
                     <span>
-                        <button className="color-switch-box">Screen-Mode</button>
-                        <CiSun />
+                        <Toggle />
                     </span>
                 </div>
             </header>
@@ -114,10 +138,26 @@ const App = () => {
                     {currentContinent(countries)}
                 </select>
             </filter-wrapper>
-            {visible && (
+            {/*  { countries.length === 0 &&(<div>hallo</div>)} */}
+            {loadingSpinner && (
+                <div>
+                    <div className="sweet-loading">
+                        <ClipLoader
+                            color={color}
+                            loadingSpinner={loadingSpinner}
+                            cssOverride={override}
+                            size={150}
+                            aria-label="Loading Spinner"
+                            data-testid="loader"
+                        />
+                    </div>
+                </div>
+            )}
+
+            {toggleVue && (
                 <div>
                     <main className="wrapper">
-                        {filteredCountriesByContinentAndInput.map((countriesItem, index) => (
+                        {slicedResult.map((countriesItem, index) => (
                             <Country
                                 ci={countriesItem}
                                 key={index}
@@ -128,8 +168,25 @@ const App = () => {
                     </main>
                 </div>
             )}
-            {!visible && <CountryInfoItem country={currentCountry} handleClick={handleClick} />}
-        </>
+            {!toggleVue && <CountryInfoItem country={currentCountry} handleClick={handleClick} />}
+            <div className="buttonWrapper">
+                {!(slicedResult.length <= 19) && (
+                    <button className="loadingButton" onClick={handleSliceCountries}>
+                        Show More Countries
+                    </button>
+                )}
+
+                {!(slicedResult.length <= 20) && (
+                    <button
+                        className="loadingButton"
+                        disabled={slicedResult.length <= 20}
+                        onClick={handleLessCountries}
+                    >
+                        Show Less Countries
+                    </button>
+                )}
+            </div>
+        </div>
     );
 };
 

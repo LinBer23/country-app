@@ -1,21 +1,13 @@
 import { useState } from "react";
 
 const Country = ({ ci, handleClick, setCurrentCountry }) => {
-    const [isHovered, setIsHovered] = useState(false);
-
-    let status = true;
-
     function localClick() {
         handleClick();
         setCurrentCountry(ci);
     }
 
     return (
-        <section
-            className="countriesItems"
-            
-            onClick={localClick}
-        >
+        <section className="countriesItems" onClick={localClick}>
             <div>
                 <div className="picWrapper">
                     <img src={ci.flags.svg} alt="flag" />

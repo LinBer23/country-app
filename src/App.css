@@ -7,19 +7,30 @@ header {
         display: flex;
 
         align-items: center;
-        & button {
-            width: 200px;
-            height: 50px;
-
-            color: rgb(169, 167, 167);
-            background-color: #213547;
-            border: none;
-            text-align: center;
-        }
-        button:hover {
-            color: #747bff;
-        }
     }
+}
+span {
+    display: flex;
+    align-items: center;
+
+    button {
+        width: 200px;
+        height: 50px;
+
+        margin: 5px;
+
+        color: rgb(169, 167, 167);
+        background-color: #213547;
+        border: none;
+        text-align: center;
+        border-radius: 5px;
+    }
+}
+& button:hover {
+    box-shadow: 2px 5px 5px 2px #747bff, 0 17px 50px 0 #747bff;
+    border: 1px solid #213547;
+    border-color: #747bff;
+    border-radius: 5px;
 }
 .color-switch-box {
     width: 90%;
@@ -61,6 +72,7 @@ filter-wrapper {
         border: none;
         background-color: #213547;
         padding-inline-start: 3px;
+        border-radius: 5px;
     }
 
     & select {
@@ -71,7 +83,20 @@ filter-wrapper {
         background-color: #213547;
         text-align: center;
         font-size: 17px;
+        border-radius: 5px;
     }
+}
+.buttonWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+select:hover,
+input:hover,
+button:hover {
+    border: 1px solid #213547;
+    border-color: #747bff;
+    border-radius: 5px;
 }
 
 section div img {
@@ -79,4 +104,17 @@ section div img {
     height: auto;
     background-color: #747bff;
     border: solid 2px #f9f9f9;
+}
+
+button {
+    width: 200px;
+    height: 50px;
+
+    margin: 5px;
+
+    color: rgb(169, 167, 167);
+    background-color: #213547;
+    border: none;
+    text-align: center;
+    border-radius: 5px;
 }
