@@ -38,10 +38,10 @@ const App = () => {
             return 1;
         });
 
+        console.log(countriesData);
         setCountries(countriesData);
         setloadingSpinner(false);
     };
-
     useEffect(() => {
         fetchCountries();
     }, []);
@@ -170,13 +170,13 @@ const App = () => {
             )}
             {!toggleVue && <CountryInfoItem country={currentCountry} handleClick={handleClick} />}
             <div className="buttonWrapper">
-                {!(slicedResult.length <= 19) && (
+                {!(slicedResult.length < 19) && (
                     <button className="loadingButton" onClick={handleSliceCountries}>
                         Show More Countries
                     </button>
                 )}
 
-                {!(slicedResult.length <= 20) && (
+                {!(slicedResult.length < 20) && (
                     <button
                         className="loadingButton"
                         disabled={slicedResult.length <= 20}
